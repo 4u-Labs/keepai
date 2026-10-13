@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidade / Privacy Policy — Keep AI</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .app-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3px;
+            gap: 2px;
+        }
+        .btn-lang {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 4px 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-lang:hover {
+            color: #fff;
+        }
+        .btn-lang.active {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+        h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #60a5fa;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            margin-bottom: 8px;
+        }
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+        }
+        [data-lang-content] {
+            display: none;
+        }
+        body.lang-pt [data-lang-content="pt"],
+        body.lang-en [data-lang-content="en"] {
+            display: block;
+        }
+    </style>
+</head>
+<body class="lang-pt">
+    <div class="header-bar">
+        <a href="./" class="app-logo">
+            <span>✨ Keep AI</span>
+        </a>
+        <div class="lang-switcher">
+            <button class="btn-lang active" data-lang="pt" onclick="setLang('pt')">PT</button>
+            <button class="btn-lang" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+
+    <!-- Conteúdo em Português -->
+    <div data-lang-content="pt">
+        <h1>Políticas de Privacidade — Keep AI</h1>
+        <p>O Keep AI, desenvolvido por 4U.IA.BR, valoriza a sua privacidade. Esta política detalha como tratamos suas informações.</p>
+        
+        <h2>1. Coleta de Dados</h2>
+        <p>Coletamos seu nome e e-mail via Google Authentication para identificar sua conta e permitir que suas notas sejam acessadas de qualquer dispositivo.</p>
+        
+        <h2>2. Uso de Inteligência Artificial</h2>
+        <p>O conteúdo de suas notas é processado via OpenAI (GPT-4) apenas quando você solicita a criação de notas por IA. Nenhum dado é vendido ou usado para treinamento de modelos externos sem o seu consentimento.</p>
+
+        <h2>3. Google Calendar & Integração</h2>
+        <p>Caso utilize a função de calendário, acessamos sua agenda apenas para criar eventos baseados no conteúdo das suas notas. O Keep AI não visualiza e não altera outros eventos pré-existentes.</p>
+        
+        <h2>4. Retenção e Exclusão de Dados</h2>
+        <p>Seus dados são armazenados de forma segura enquanto sua conta estiver ativa. Você pode solicitar a exclusão total da sua conta e de todas as suas notas a qualquer momento através do e-mail de suporte <strong>contato@4u.ia.br</strong>. Após a solicitação, os dados serão removidos em até 7 dias úteis.</p>
+
+        <h2>5. Conformidade e Segurança</h2>
+        <p>Seguimos as diretrizes da LGPD (Brasil) e as melhores práticas de segurança de APIs do Google. Utilizamos criptografia de ponta para proteger seus tokens de acesso e dados pessoais.</p>
+
+        <h2>6. Contato</h2>
+        <p>Para dúvidas sobre sua privacidade, entre em contato:</p>
+        <ul>
+            <li><strong>Responsável:</strong> 4U.IA.BR</li>
+            <li><strong>E-mail:</strong> contato@4u.ia.br</li>
+            <li><strong>Website:</strong> <a href="https://4u.ia.br" target="_blank">4u.ia.br</a></li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="./" class="back-link">← Voltar ao App</a>
+        </div>
+    </div>
+
+    <!-- Content in English -->
+    <div data-lang-content="en">
+        <h1>Privacy Policy — Keep AI</h1>
+        <p>Keep AI, developed by 4U.IA.BR, values your privacy. This policy details how we treat and safeguard your information.</p>
+        
+        <h2>1. Data Collection</h2>
+        <p>We collect your name and email address via Google Authentication to identify your account and allow your notes to be securely synced and accessed across any device.</p>
+        
+        <h2>2. Use of Artificial Intelligence</h2>
+        <p>Your note content is processed via OpenAI (GPT-4) only when you explicitly request AI note generation or organization. No data is sold or used to train external foundation models without your consent.</p>
+
+        <h2>3. Google Calendar & Integration</h2>
+        <p>If you use the calendar sync feature, we access your Google Calendar solely to create events based on your scheduled notes. Keep AI does not read, view, or modify any other pre-existing events in your calendar.</p>
+        
+        <h2>4. Data Retention & Deletion</h2>
+        <p>Your data is stored securely for as long as your account remains active. You may request the complete deletion of your account and all associated notes at any time by contacting our support team at <strong>contato@4u.ia.br</strong>. Upon request, all data will be permanently purged within 7 business days.</p>
+
+        <h2>5. Compliance & Security</h2>
+        <p>We adhere to LGPD (Brazil) and GDPR principles as well as Google API security best practices. Industry-standard encryption is applied to protect your personal information and access tokens.</p>
+
+        <h2>6. Contact Us</h2>
+        <p>For questions or requests regarding your privacy, please contact:</p>
+        <ul>
+            <li><strong>Entity:</strong> 4U.IA.BR</li>
+            <li><strong>Email:</strong> contato@4u.ia.br</li>
+            <li><strong>Website:</strong> <a href="https://4u.ia.br" target="_blank">4u.ia.br</a></li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="./" class="back-link">← Back to App</a>
+        </div>
+    </div>
+
+    <script>
+        function detectLang() {
+            const saved = localStorage.getItem('keepai_lang');
+            if (saved === 'pt' || saved === 'en') return saved;
+            const nav = (navigator.language || 'en').toLowerCase();
+            return nav.startsWith('pt') ? 'pt' : 'en';
+        }
+
+        function setLang(lang) {
+            document.body.className = 'lang-' + lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            localStorage.setItem('keepai_lang', lang);
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize on load
+        setLang(detectLang());
+    </script>
+</body>
+</html>

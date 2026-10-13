@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Configuração / Setup Guide — Keep AI</title>
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1);
+            --accent: #38bdf8;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --code-bg: #0f172a;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px 80px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .app-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3px;
+            gap: 2px;
+        }
+        .btn-lang {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 4px 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-lang:hover {
+            color: #fff;
+        }
+        .btn-lang.active {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+        }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; color: var(--accent); }
+        h2 { font-size: 1.4rem; margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--accent); }
+        h3 { font-size: 1.1rem; margin-top: 20px; color: #fff; }
+        p { margin-bottom: 15px; color: var(--text-dim); }
+        .card {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: #f87171;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 16px;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+        pre code { background: none; color: #6ee7b7; padding: 0; }
+        .step { display: flex; gap: 15px; margin-bottom: 20px; }
+        .step-num {
+            background: var(--accent);
+            color: var(--bg);
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0;
+        }
+        .link-box {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 8px 10px 0;
+            transition: opacity 0.2s;
+        }
+        .link-box:hover { opacity: 0.8; }
+        .alert {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid #fbbf24;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .alert strong { color: #fbbf24; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        footer { margin-top: 60px; text-align: center; font-size: 0.9rem; color: var(--text-dim); }
+        [data-lang-content] {
+            display: none;
+        }
+        body.lang-pt [data-lang-content="pt"],
+        body.lang-en [data-lang-content="en"] {
+            display: block;
+        }
+    </style>
+</head>
+<body class="lang-pt">
+    <div class="container">
+        <div class="header-bar">
+            <a href="./" class="app-logo">
+                <span>✨ Keep AI</span>
+            </a>
+            <div class="lang-switcher">
+                <button class="btn-lang active" data-lang="pt" onclick="setLang('pt')">PT</button>
+                <button class="btn-lang" data-lang="en" onclick="setLang('en')">EN</button>
+            </div>
+        </div>
+
+        <!-- Português -->
+        <div data-lang-content="pt">
+            <h1>Guia de Configuração Maestro</h1>
+            <p>Este guia detalha como configurar o ecossistema <strong>Firebase + Google Cloud</strong> para seus WebApps baseados no framework <strong>4U.IA.BR</strong>.</p>
+
+            <section>
+                <h2>1. Firebase (Autenticação)</h2>
+                <div class="card">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <h3>Crie o Projeto no Firebase</h3>
+                            <p>Acesse o <a href="https://console.firebase.google.com/" target="_blank" style="color:var(--accent)">Console do Firebase</a>, crie um projeto e adicione uma "Web App".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <h3>Ative o Google Login</h3>
+                            <p>Vá em <strong>Authentication > Sign-in method</strong> e ative o provider "Google".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <h3>Domínios Autorizados (CRÍTICO)</h3>
+                            <p>Em <strong>Authentication > Settings > Authorized domains</strong>, adicione seu domínio de produção (ex: <code>4u.ia.br</code>).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Google Cloud (OAuth 2.0)</h2>
+                <p>Aqui é onde a maioria dos erros acontece. Você precisa de <strong>dois</strong> tipos de autorização no <a href="https://console.cloud.google.com/apis/credentials" target="_blank" style="color:var(--accent)">Google Cloud Console</a>.</p>
+                
+                <div class="card">
+                    <h3>A. O Client do Firebase (Obrigatório para Login)</h3>
+                    <p>Procure o Client ID que o Firebase criou automaticamente (geralmente chama-se <code>Web client (auto created by Google Service)</code>).</p>
+                    <div class="alert">
+                        <strong>Atenção:</strong> Você DEVE adicionar a URL de callback do Firebase nos "URIs de redirecionamento autorizados" deste client:
+                        <br><code>https://PROJETO-ID.firebaseapp.com/__/auth/handler</code>
+                    </div>
+
+                    <h3>B. O Client Manual (Para Calendário/Drive/IA)</h3>
+                    <p>Crie um novo **OAuth client ID** do tipo **Web application**.</p>
+                    <p><strong>Configuração:</strong></p>
+                    <ul>
+                        <li><strong>JavaScript Origins:</strong> <code>https://4u.ia.br</code></li>
+                        <li><strong>Redirect URIs:</strong> <code>https://4u.ia.br/app/NOME-DO-APP/api/oauth_callback.php</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Chaves de Configuração</h2>
+                <p>No seu arquivo <code>api/config.php</code>, a estrutura das chaves Google deve ser:</p>
+                <pre><code>define('GOOGLE_CLIENT_ID', 'SUA-CHAVE.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_SECRET', 'SEU-SECRET');
+define('GOOGLE_REDIRECT_URI', 'https://4u.ia.br/app/keepai/api/oauth_callback.php');</code></pre>
+            </section>
+
+            <section>
+                <h2>4. Checklist de Erros Comuns</h2>
+                <div class="card">
+                    <p>❌ <code>Erro 400: redirect_uri_mismatch</code></p>
+                    <p><strong>Causa:</strong> A URL no console do Google não é 100% igual à do código (falta um 's' no https, falta uma barra, ou o domínio está errado).</p>
+                    <p><strong>Solução:</strong> Clique em "Detalhes do erro" na tela do Google e copie a URL exata que ele está pedindo.</p>
+                    <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
+                    <p>❌ <code>Opcache / Cache de Servidor</code></p>
+                    <p><strong>Causa:</strong> Você editou o <code>config.php</code> mas o site continua dando erro.</p>
+                    <p><strong>Solução:</strong> Alguns servidores guardam o PHP na memória. Tente renomear o arquivo ou limpar o cache no painel da hospedagem.</p>
+                </div>
+            </section>
+
+            <a href="https://console.cloud.google.com/apis/credentials" target="_blank" class="link-box">Ir para Google Cloud Console</a>
+            <a href="https://console.firebase.google.com/" target="_blank" class="link-box" style="background: #f59e0b;">Ir para Firebase Console</a>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="./" class="back-link">← Voltar ao App</a>
+            </div>
+
+            <footer>
+                Guia Gerado pelo Antigravity — Base do Framework 4U.IA.BR &copy; 2026
+            </footer>
+        </div>
+
+        <!-- English -->
+        <div data-lang-content="en">
+            <h1>Master Configuration Guide</h1>
+            <p>This guide details how to configure the <strong>Firebase + Google Cloud</strong> ecosystem for your WebApps built on the <strong>4U.IA.BR</strong> framework.</p>
+
+            <section>
+                <h2>1. Firebase (Authentication)</h2>
+                <div class="card">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <h3>Create Firebase Project</h3>
+                            <p>Open the <a href="https://console.firebase.google.com/" target="_blank" style="color:var(--accent)">Firebase Console</a>, create a project, and add a "Web App".</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <h3>Enable Google Sign-in</h3>
+                            <p>Go to <strong>Authentication > Sign-in method</strong> and enable the "Google" provider.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <h3>Authorized Domains (CRITICAL)</h3>
+                            <p>Under <strong>Authentication > Settings > Authorized domains</strong>, add your production domain (e.g. <code>4u.ia.br</code>).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Google Cloud (OAuth 2.0)</h2>
+                <p>This is where most setup errors occur. You need <strong>two</strong> types of authorization in the <a href="https://console.cloud.google.com/apis/credentials" target="_blank" style="color:var(--accent)">Google Cloud Console</a>.</p>
+                
+                <div class="card">
+                    <h3>A. The Firebase Client (Required for Login)</h3>
+                    <p>Locate the Client ID automatically created by Firebase (usually named <code>Web client (auto created by Google Service)</code>).</p>
+                    <div class="alert">
+                        <strong>Warning:</strong> You MUST add the Firebase callback URL into the "Authorized redirect URIs" of this client:
+                        <br><code>https://PROJECT-ID.firebaseapp.com/__/auth/handler</code>
+                    </div>
+
+                    <h3>B. The Manual Client (For Calendar / Drive / AI)</h3>
+                    <p>Create a new **OAuth client ID** of type **Web application**.</p>
+                    <p><strong>Configuration:</strong></p>
+                    <ul>
+                        <li><strong>JavaScript Origins:</strong> <code>https://4u.ia.br</code></li>
+                        <li><strong>Redirect URIs:</strong> <code>https://4u.ia.br/app/APP-NAME/api/oauth_callback.php</code></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Configuration Keys</h2>
+                <p>In your <code>api/config.php</code> file, the Google keys structure must be:</p>
+                <pre><code>define('GOOGLE_CLIENT_ID', 'YOUR-KEY.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_SECRET', 'YOUR-SECRET');
+define('GOOGLE_REDIRECT_URI', 'https://4u.ia.br/app/keepai/api/oauth_callback.php');</code></pre>
+            </section>
+
+            <section>
+                <h2>4. Common Errors Checklist</h2>
+                <div class="card">
+                    <p>❌ <code>Error 400: redirect_uri_mismatch</code></p>
+                    <p><strong>Cause:</strong> The URL in the Google console does not 100% match the code (missing 's' in https, missing slash, or wrong domain).</p>
+                    <p><strong>Solution:</strong> Click "Error details" on the Google error screen and copy the exact URL it is requesting.</p>
+                    <hr style="border:0; border-top:1px solid var(--border); margin:15px 0;">
+                    <p>❌ <code>Opcache / Server Cache</code></p>
+                    <p><strong>Cause:</strong> You updated <code>config.php</code> but the server keeps serving the cached PHP script.</p>
+                    <p><strong>Solution:</strong> Some hosting servers keep PHP in memory. Try clearing the cache in the hosting control panel.</p>
+                </div>
+            </section>
+
+            <a href="https://console.cloud.google.com/apis/credentials" target="_blank" class="link-box">Go to Google Cloud Console</a>
+            <a href="https://console.firebase.google.com/" target="_blank" class="link-box" style="background: #f59e0b;">Go to Firebase Console</a>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="./" class="back-link">← Back to App</a>
+            </div>
+
+            <footer>
+                Guide Generated by Antigravity — 4U.IA.BR Framework Base &copy; 2026
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function detectLang() {
+            const saved = localStorage.getItem('keepai_lang');
+            if (saved === 'pt' || saved === 'en') return saved;
+            const nav = (navigator.language || 'en').toLowerCase();
+            return nav.startsWith('pt') ? 'pt' : 'en';
+        }
+
+        function setLang(lang) {
+            document.body.className = 'lang-' + lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            localStorage.setItem('keepai_lang', lang);
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize on load
+        setLang(detectLang());
+    </script>
+</body>
+</html>

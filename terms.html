@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso / Terms of Use — Keep AI</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+        }
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .app-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3px;
+            gap: 2px;
+        }
+        .btn-lang {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 4px 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-lang:hover {
+            color: #fff;
+        }
+        .btn-lang.active {
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+        h1 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #60a5fa;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            margin-bottom: 8px;
+        }
+        p, li {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            text-decoration: none;
+        }
+        [data-lang-content] {
+            display: none;
+        }
+        body.lang-pt [data-lang-content="pt"],
+        body.lang-en [data-lang-content="en"] {
+            display: block;
+        }
+    </style>
+</head>
+<body class="lang-pt">
+    <div class="header-bar">
+        <a href="./" class="app-logo">
+            <span>✨ Keep AI</span>
+        </a>
+        <div class="lang-switcher">
+            <button class="btn-lang active" data-lang="pt" onclick="setLang('pt')">PT</button>
+            <button class="btn-lang" data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+
+    <!-- Conteúdo em Português -->
+    <div data-lang-content="pt">
+        <h1>Termos de Uso — Keep AI</h1>
+        <p>Estes termos regem o uso do Keep AI. Ao acessar ou utilizar o serviço, você concorda expressamente com as condições abaixo.</p>
+
+        <h2>1. Descrição do Serviço</h2>
+        <p>O Keep AI é uma plataforma inteligente de produtividade e memória digital que utiliza Inteligência Artificial para organização de notas, listas de compras/tarefas e compromissos. O serviço é mantido e operado pela 4U.IA.BR.</p>
+
+        <h2>2. Uso Responsável</h2>
+        <p>Você é o único responsável pelo conteúdo criado, armazenado ou compartilhado através de suas notas. É terminantemente proibido o uso do serviço para finalidades ilegais, difamatórias ou que violem a privacidade e os direitos de propriedade intelectual de terceiros.</p>
+
+        <h2>3. Sistema de Créditos e Pagamentos</h2>
+        <p>Determinadas funções avançadas de IA consomem créditos de processamento, os quais podem ser adquiridos via PIX (Mercado Pago). Os créditos não são reembolsáveis após o consumo em gerações concluídas, garantindo-se sempre a entrega do serviço conforme contratado.</p>
+
+        <h2>4. Limitação de Responsabilidade</h2>
+        <p>O Keep AI é fornecido "como está" e conforme a disponibilidade. Embora empreguemos técnicas robustas de Local-First e backup redundante, não nos responsabilizamos por perdas de dados decorrentes de mau uso da conta pessoal, falhas no dispositivo do usuário ou interrupções de serviços de terceiros (como Google Cloud ou OpenAI).</p>
+
+        <h2>5. Modificações e Encerramento</h2>
+        <p>Reservamo-nos o direito de aprimorar ou atualizar o serviço e estes termos a qualquer momento. Em caso improvável de encerramento definitivo das atividades, os usuários serão notificados com pelo menos 30 dias de antecedência para exportarem integralmente seus dados.</p>
+
+        <h2>6. Lei Aplicável e Foro</h2>
+        <p>Estes termos são regidos pelas leis da República Federativa do Brasil, elegendo-se o foro competente para resolução de quaisquer litígios.</p>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="./" class="back-link">← Voltar ao App</a>
+        </div>
+    </div>
+
+    <!-- Content in English -->
+    <div data-lang-content="en">
+        <h1>Terms of Use — Keep AI</h1>
+        <p>These terms govern your access and use of Keep AI. By accessing or using the service, you expressly agree to the conditions set forth below.</p>
+
+        <h2>1. Description of Service</h2>
+        <p>Keep AI is an intelligent productivity and digital memory platform powered by Artificial Intelligence for organizing notes, shopping lists, tasks, and appointments. The service is operated and maintained by 4U.IA.BR.</p>
+
+        <h2>2. Acceptable Use</h2>
+        <p>You are solely responsible for the content you create, store, or share within your notes. Using the service for unlawful purposes, defamatory content, or violating the intellectual property or privacy rights of any third party is strictly prohibited.</p>
+
+        <h2>3. Credits System & Purchases</h2>
+        <p>Select advanced AI capabilities consume processing credits, which may be purchased via digital payment methods. Credits are non-refundable once consumed for completed AI generations, ensuring delivery of service as contracted.</p>
+
+        <h2>4. Limitation of Liability</h2>
+        <p>Keep AI is provided on an "as is" and "as available" basis. While we employ resilient Local-First architecture and cloud sync backups, we are not liable for data loss caused by account mishandling, user device failure, or external outages of third-party platforms (such as Google Cloud or OpenAI).</p>
+
+        <h2>5. Modifications & Termination</h2>
+        <p>We reserve the right to improve, update, or modify the service and these terms at any time. In the unlikely event of permanent service discontinuation, users will receive at least 30 days prior notice to export their data in full.</p>
+
+        <h2>6. Governing Law</h2>
+        <p>These terms shall be governed by and construed in accordance with applicable laws, with competent jurisdiction designated for dispute resolution.</p>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="./" class="back-link">← Back to App</a>
+        </div>
+    </div>
+
+    <script>
+        function detectLang() {
+            const saved = localStorage.getItem('keepai_lang');
+            if (saved === 'pt' || saved === 'en') return saved;
+            const nav = (navigator.language || 'en').toLowerCase();
+            return nav.startsWith('pt') ? 'pt' : 'en';
+        }
+
+        function setLang(lang) {
+            document.body.className = 'lang-' + lang;
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            localStorage.setItem('keepai_lang', lang);
+            document.querySelectorAll('.btn-lang').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Initialize on load
+        setLang(detectLang());
+    </script>
+</body>
+</html>

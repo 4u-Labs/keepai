@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+scratch/
+.env
+data/*.db
+
+.agent/
+
+database/*.db
+*.sqlite
+*.sqlite3
