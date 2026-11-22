@@ -19,6 +19,20 @@ require_once __DIR__ . '/database.php';
 // Or as query params: ?topic=payment&id=1234567890
 
 $body      = json_decode(file_get_contents('php://input'), true) ?? [];
+
+// Optional Mercado Pago x-signature HMAC-SHA256 verification when MP_WEBHOOK_SECRET is set
+if (defined('MP_WEBHOOK_SECRET') && MP_WEBHOOK_SECRET !== '') {
+    $_mpPid = (string) ($body['data']['id'] ?? ($_GET['data_id'] ?? ($_GET['id'] ?? '')));
+    $_xSig  = (string) ($_SERVER['HTTP_X_SIGNATURE'] ?? '');
+    $_xReq  = (string) ($_SERVER['HTTP_X_REQUEST_ID'] ?? '');
+    $_ts = ''; $_v1 = '';
+    foreach (explode(',', $_xSig) as $_part) {
+        $_kv = explode('=', trim($_part), 2);
+        if (count($_kv) === 2) { if ($_kv[0] === 'ts') $_ts = $_kv[1]; if ($_kv[0] === 'v1') $_v1 = $_kv[1]; }
+    }
+    $_exp = hash_hmac('sha256', "id:{$_mpPid};request-id:{$_xReq};ts:{$_ts};", MP_WEBHOOK_SECRET);
+    if ($_mpPid !== '' && ($_v1 === '' || !hash_equals($_exp, $_v1))) { http_response_code(401); exit('Invalid signature'); }
+}
 $topic     = $body['type'] ?? ($_GET['topic'] ?? '');
 $paymentId = $body['data']['id'] ?? ($_GET['id'] ?? null);
 
@@ -73,6 +87,9 @@ if (!$userId || $creditsToAdd <= 0) {
 
 $pdo = Database::get();
 
+$pdo->exec('PRAGMA busy_timeout = 5000');
+$pdo->exec('BEGIN IMMEDIATE');
+try {
 // Idempotency check — don't process the same payment twice
 $checkStmt = $pdo->prepare('SELECT status FROM transactions WHERE mp_payment_id = ?');
 $checkStmt->execute([(string) $paymentId]);
@@ -80,6 +97,7 @@ $existing = $checkStmt->fetch();
 
 if ($existing && $existing['status'] === 'approved') {
     // Already processed
+    $pdo->exec('COMMIT');
     http_response_code(200);
     echo 'OK';
     exit;
@@ -98,6 +116,12 @@ if ($existing) {
         INSERT INTO transactions (user_id, mp_payment_id, package_label, amount_brl, credits_added, status)
         VALUES (?, ?, ?, ?, ?, "approved")
     ')->execute([$userId, (string) $paymentId, $label, $amountBRL, $creditsToAdd]);
+}
+
+$pdo->exec('COMMIT');
+} catch (Throwable $_e) {
+    if ($pdo->inTransaction()) { $pdo->exec('ROLLBACK'); }
+    http_response_code(500); exit;
 }
 
 // Always respond 200 to Mercado Pago

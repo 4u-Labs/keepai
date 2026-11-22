@@ -37,7 +37,7 @@ $vCss = filemtime(__DIR__ . '/style-v46.css') ?: time();
         });
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Open Graph (Prioritized) -->
     <meta property="og:type" content="website">
@@ -50,10 +50,8 @@ $vCss = filemtime(__DIR__ . '/style-v46.css') ?: time();
     <meta itemprop="image" content="https://4u.ia.br/app/keepai/512.png?v=46">
 
     <title>Keep AI — Notas Inteligentes</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261120-2">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261120-2">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v46.css?v=<?= $vCss ?>">
     <link rel="manifest" href="manifest.json?v=46.4.2">
@@ -65,6 +63,9 @@ $vCss = filemtime(__DIR__ . '/style-v46.css') ?: time();
     <meta name="description" content="Keep AI — Notas Inteligentes">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 4u-Labs SEO & Standard Meta -->
+    <link rel="canonical" href="https://4u.ia.br/app/keepai/">
 </head>
 <body>
 
